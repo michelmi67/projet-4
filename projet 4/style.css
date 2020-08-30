@@ -1,0 +1,62 @@
+#header{
+
+    display: flex;
+    background-color: rgb(165, 174, 181);
+}
+
+#image_ecriture{
+
+    height: 150px;
+
+}
+
+#acteur{
+
+    margin-left:400px;
+
+}
+
+#jean{
+
+    height: 300px;
+    float: left;
+    margin-right: 20px;
+
+}
+
+#billet{
+
+    border: solid black 2px;
+    height: 400px;
+
+}
+
+#billet p {
+
+    margin-left: 10px;
+}
+
+.titre_billet{
+
+    margin-left: 150px;
+
+}
+
+#chapitre_1{
+
+    margin-left: 50px;
+
+}
+
+#alaska{
+
+    height: 300px;
+    float: right;
+
+}
+
+#lire{
+
+    margin-left:300px ;
+
+}
