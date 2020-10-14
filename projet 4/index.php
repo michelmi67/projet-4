@@ -65,7 +65,7 @@
                     <span id='lire'><a href="&&&">lire la suite</a></span>
             </div> 
         </div>
-            <p>essais commit</p>
+            
             
         <script src="main.js"></script>
     </body>
