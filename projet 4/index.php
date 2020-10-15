@@ -19,7 +19,7 @@
         </header>
 
         <nav>
-        <!-- inclusion du nvaigateur -->
+        <!-- inclusion du navigateur -->
             <?php include'php/mise_en_page/nav.php'; ?>
         </nav>
 
@@ -65,7 +65,10 @@
                     <span id='lire'><a href="&&&">lire la suite</a></span>
             </div> 
         </div>
-            
+        <footer>
+        <!-- inclusion du footer -->
+             <?php include 'php/mise_en_page/footer.php' ?>
+        </footer>    
             
         <script src="main.js"></script>
     </body>
