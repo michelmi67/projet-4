@@ -10,6 +10,13 @@
 
 }
 
+#connexion{
+
+margin-left: 500px;
+background-color: rgba(128,144,245);
+
+}
+
 #acteur{
 
     margin-left:400px;
@@ -61,7 +68,7 @@
     
 }
 
-#footer{
+footer{
 
     background-color: rgb(165, 174, 181);
 
