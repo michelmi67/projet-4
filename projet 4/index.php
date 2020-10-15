@@ -67,9 +67,9 @@
         </div>
         <footer>
         <!-- inclusion du footer -->
-             <?php include 'php/mise_en_page/footer.php' ?>
+             <?php include 'php/mise_en_page/footer.php'; ?>
         </footer>    
             
-        <script src="main.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>
