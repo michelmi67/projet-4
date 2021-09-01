@@ -59,7 +59,7 @@ session_start();
                     $_SESSION['nom'] = $donnees['nom'];
                     $_SESSION['prenom'] = $donnees['prenom'];
                     $_SESSION['email'] = $donnees['email'];
-                    header('Location:interface.php');     
+                    header('Location:index.php');     
                 }
                 else
                 {

@@ -15,14 +15,15 @@
         
     </head>
     <header>
-        <div class = "connection">
+    <div class = "connection">
             <button><a href = connection.php>Connection admin</a></button>
             <?php
             if(isset($_SESSION['id']))
             {
                 ?>
-                <button><a href = "interface.php">Interface</a></button>
+                <button><a href = "creer_billet">Creation billet</a></button>
                 <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
+                <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
                 <?php
             }
             ?>
