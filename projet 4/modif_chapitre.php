@@ -1,5 +1,9 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['id']))
+    {
+        header('Location:index.php');
+    }
 ?>
 <!DOCTYPE html>
 
@@ -30,7 +34,7 @@
         </div>
         <div class = "chapitre">
             <button><a href = index.php>Accueil</a></button>
-            <button><a href = chapitre.php>Chapitres</a></button>
+            <button><a href = index_chapitre.php>Chapitres</a></button>
         </div>
     </header>
     <body class = "interface">

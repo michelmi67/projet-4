@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -27,7 +28,7 @@ session_start();
         </div>
         <div class = "chapitre">
             <button><a href = index.php>Accueil</a></button>
-            <button><a href = chapitre.php>Chapitres</a></button>
+            <button><a href = index_chapitre.php>Chapitres</a></button>
         </div>
     </header>
     <body>

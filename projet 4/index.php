@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    
 ?>
 <!DOCTYPE html>
 
@@ -24,13 +25,14 @@
                 <button><a href = "creer_billet">Creation billet</a></button>
                 <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
                 <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
+                <button><a href = "deconnection.php">Deconnection</a></button>
                 <?php
             }
             ?>
         </div>
         <div class = "chapitre">
             <button><a href = index.php>Accueil</a></button>
-            <button><a href = chapitre.php>Chapitres</a></button>
+            <button><a href = index_chapitre.php>Chapitres</a></button>
         </div>
     </header>
     <body class = "accueil" >
@@ -91,7 +93,7 @@
             ?> 
                 <tr>
                     <td id = "td_titre"><?php echo substr($titre,0,100);?></td> 
-                    <td><?php echo substr($article,0,250);?><p><a href = "chapitre.php" > lire la suite...</a></p></td>
+                    <td><?php echo substr($article,0,250);?><p><a href = "chapitre.php?chapitre=<?php echo $donnees['id'] ?>" > lire la suite...</a></p></td>
                     
                 </tr> 
             <?php            

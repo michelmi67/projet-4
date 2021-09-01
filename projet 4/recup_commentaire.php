@@ -1,5 +1,9 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['id']))
+    {
+        header('Location:index.php');
+    }
 ?>
 <!DOCTYPE html>
 
@@ -31,7 +35,7 @@
         </div>
         <div class = "chapitre">
             <button><a href = index.php>Accueil</a></button>
-            <button><a href = chapitre.php>Chapitres</a></button>
+            <button><a href = index_chapitre.php>Chapitres</a></button>
         </div>
     </header>
     <body class = "recup_chapitre">
@@ -80,7 +84,7 @@
                     <td><?php echo substr($message,0,100);?></td> 
                     <td>
                         <div class = "action"> 
-                            <a href = "commentaire.php?chapitre= <?php echo $donnees['id_chapitre']; ?>"><i class="far fa-eye"></i></a>
+                            <a href = "chapitre.php?chapitre= <?php echo $donnees['id_chapitre']; ?>"><i class="far fa-eye"></i></a>
                             <a href = "suprime_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-trash-alt"></i></a>
                         </div>
                     </td>

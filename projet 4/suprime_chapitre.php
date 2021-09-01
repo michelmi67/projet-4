@@ -1,5 +1,9 @@
 <?php 
     session_start();
+    if(!isset($_SESSION['id']))
+    {
+        header('Location:index.php');
+    }
 
     //Connection à la base de données
     try
