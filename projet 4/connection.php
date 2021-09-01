@@ -6,11 +6,32 @@ session_start();
     <head>
         <title>Blog de Jean Forteroche</title>
         <meta charset = " utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="css/style.css"/>
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     </head>
     <header>
-        <h1>Connection d'un administrateur</h1>
+    <div class = "connection">
+            <button><a href = connection.php>Connection admin</a></button>
+            <?php
+            if(isset($_SESSION['id']))
+            {
+                ?>
+                <button><a href = "creer_billet">Creation billet</a></button>
+                <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
+                <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
+                <?php
+            }
+            ?>
+        </div>
+        <div class = "chapitre">
+            <button><a href = index.php>Accueil</a></button>
+            <button><a href = chapitre.php>Chapitres</a></button>
+        </div>
     </header>
     <body>
+        <h1>Connection d'un administrateur</h1>
         <!--Formulaire d'inscription pour un admin -->
         <form method = "post" action = "">
             <p>
