@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -9,67 +12,90 @@
         <link rel="stylesheet" href="css/style.css"/>
         <!-- bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <script src="https://cdn.tiny.cloud/1/03puxw65ydbv9n6fvxcaqfxnd9h3hk5c1hjm1afabuf62exq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
-
-    <body class="container">
-
-        <header>
-        <!-- inclusion du header -->
-            <?php include'php/mise_en_page/header.php'; ?>
-        </header>
-
-        <nav>
-        <!-- inclusion du navigateur -->
-            <?php include'php/mise_en_page/nav.php'; ?>
-        </nav>
-
-        <div id="container">
-            <img src="image/jean.jpg" alt="photo de jean Forteroche" id="jean"/>
-            <h2>Jean Forteroch</h2>
-            <p>
-                Jean Forteroche, plus connu sous les noms de plume J.Fort, est un romancier et scénariste anglais née le 31 juillet 1965 dans l’agglomération de Yate, dans le Gloucestershire du Sud.
-                Il doit sa notoriété mondiale à la série Harry Potter, dont les romans traduits en près de quatre-vingts langues ont été vendus à plus de 500 millions d'exemplaires dans le monde.
-                Issu d’une famille modeste, il a écrit sa première « histoire » à l'âge de six ans. Après des études à l'université d'Exeter ainsi qu'à la Sorbonne où il a obtenu un diplôme en littérature française 
-                et en philologie, il a travaillé un temps au sein d'Amnesty International, puis a enseigné l'anglais et le français. C'est à vingt-cinq ans qu'il a bâti les premiers concepts et institutions de son
-                univers sorcier, dans lequel un enfant orphelin découvrait à la fois son héritage tragique et ses talents de magicien. Il a rédigé son premier roman, L'École des sorciers, dans un contexte de précarité 
-                et de dépression et a dû attendre plus d'un an avant sa publication en 1997 chez Bloomsbury.<br>
-                Acclamé par ses lecteurs de tout âge et par la critique, J.Fort a remporté de nombreux prix littéraires, notamment les prix Hugo, Locus et Bram Stoker, et a reçu la croix de chevalier de la Légion
-                d'honneur en 2009. Il est réputé pour aborder des idées et des thèmes profonds avec accessibilité et humour, et s'attacher régulièrement à des personnages placés en marge de la société.
-                Time Magazine l'a élue vice-championne du titre de la Personnalité de l'année en 2007, relevant l'inspiration sociale, morale et politique qu'il aurait insufflé à ses fans. 
-                En octobre 2010, il a également été nommé « Homme le plus influent de Grande-Bretagne » par les principaux éditeurs de magazines. Très présent sur les réseaux sociaux, où il prend régulièrement 
-                la parole sur des sujets politiques ou de société qui lui sont chers, il lui arrive aussi d'être critiquée sur ses positions. En 2020, notamment, ses propos sur l'identité de genre font polémique,
-                en étant considérés transphobes par de nombreux fans et militants de la cause trans.<br>
-                Le succès planétaire de son heptalogie romanesque, des films adaptés ainsi que des travaux dérivés de Harry Potter lui ont permis d'acquérir une fortune considérable, dont une partie est régulièrement
-                reversée à de nombreuses associations caritatives luttant contre la maladie et les inégalités sociales. J.Fort est devenu un philanthrope reconnu en cofondant notamment l'association Lumos qui œuvre 
-                pour la protection de l'enfance.<br>
-                Il se tourne vers un public adulte à partir de 2012 en publiant le roman social Une place à prendre, puis en entamant une série policière l'année suivante, sous un second nom de plume. Il devient 
-                également scénariste pour le cinéma à partir de 2016 en étendant son univers sorcier à travers la série de films Les Animaux fantastiques, dont le premier volet a connu un succès international.
-            </p>
-            <h2>Roman : Billet simple pour l'Alaska</h2>
-            <p>
-                Je veux innover le monde de la lecture. Pour cela, je posterais chaque début de mois, un nouveau chapitre de mon nouveau roman: Billet pour l'Alaska. Une lecture gratuite, ouverte à tous !
-                Les premiers chapitres sont déjà à votre disposition...
-            </p>
-            <div id="billet">
-                <h3 class="titre_billet">Billet simple pour l'Alaska</h3>
-                <h4 id='chapitre_1'>CHAPITRE 1 :Un nouveau départ</h4>
-                <img src="image/alaska.jpg" alt="image de l'Alaska" id="alaska"/>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In ullam at aspernatur, veniam minima ex dignissimos nobis voluptatem sunt suscipit excepturi illo accusantium voluptates incidunt 
-                        vitae atque veritatis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae pariatur obcaecati at a ipsam quibusdam soluta officia, quia quam cupiditate, enim velit! Iusto vel deleniti 
-                        magnam rem distinctio mollitia fuga.<br>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt excepturi magnam neque natus exercitationem explicabo est accusantium ipsam adipisci, eos, nesciunt quidem architecto ex velit quis
-                        odio doloremque et fugiat.<br>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta officia sapiente ad dolores illum, minus dolorem accusantium suscipit totam impedit dolore velit consequuntur quae amet.
-                        Fugiat quod officiis quia eveniet.
-                    </p>
-                    <span id='lire'><a href="&&&">lire la suite</a></span>
-            </div> 
+    <header>
+        <div class = "connection">
+            <button><a href = connection.php>Connection admin</a></button>
+            <?php
+            if(isset($_SESSION['id']))
+            {
+                ?>
+                <button><a href = "interface.php">Interface</a></button>
+                <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
+                <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
+                <?php
+            }
+            ?>
         </div>
-        <footer>
-        <!-- inclusion du footer -->
-             <?php include 'php/mise_en_page/footer.php'; ?>
-        </footer>    
-            
-        <script src="js/main.js"></script>
+        <div class = "chapitre">
+            <button><a href = index.php>Accueil</a></button>
+            <button><a href = chapitre.php>Chapitres</a></button>
+        </div>
+    </header>
+    <body class = "accueil" >
+        <h1>Bienvenue sur le blog de Jean Forteroche !</h1>
+        <h3>acteur et écrivain</h3>
+        <p><img src = "image/jean.jpg" alt = "photo de jean forteroche"/></p>
+        <p><strong>Jean Forteroche</strong> , plus connue sous les noms de plume  <strong>J.F Forteroche</strong> et Robert Galbraith, est un romancier et acteur 
+            britannique née le 31 juillets 1965 dans l’agglomération de Yate (Gloucestershire du Sud). Il doit sa notoriété mondiale à la série Harry potter, dont les romans 
+            traduits en près de quatre-vingts langues ont été vendus à plus de 500 millions d'exemplaires dans le monde.</p>
+        <p>Issu d’une famille modeste, il a écrit sa première « histoire » à l'âge de six ans. Après des études à l'université d'Exeter ainsi qu'à la Sorbonne où il a
+            obtenu un diplôme en littérature française et en philologie, il a travaillé un temps au sein d'Amnesty International, puis a enseigné l'anglais et le français.
+            C'est à vingt-cinq ans qu'il a bâti les premiers concepts et institutions de son univers sorcier, dans lequel un enfant orphelin découvrait à la fois son 
+            héritage tragique et ses talents de magicien. Il a rédigé son premier roman,L'Ecole des sorciers, dans un contexte de précarité et de dépression et a dû 
+            attendre plus d'un an avant sa publication en 1991chez Bloomsbury.</p>
+        <p>Acclamée par ses lecteurs de tout âge et par la critique, J.F Forteroche a remporté de nombreux prix littéraires, notamment lesprix Hugo,Locus et Bram Stoker, 
+            et a reçu la croix de chevalier de légion d'honneur en 2009. Il est réputé pour aborder des idées et des thèmes profonds avec accessibilité et humour, et
+            s'attacher régulièrement à des personnages placés en marge de la société. Time Magazine l'a élu vice-champion du titre de la Personnalité de l'année en 2007,
+            relevant l'inspiration sociale, morale et politique qu'il aurait insufflé à ses fans. En octobre 2010, il a également été nommé « Homme le plus influent de 
+            Grande-Bretagne » par les principaux éditeurs de magazines. Très présent sur les réseaux sociaux, où il prend régulièrement la parole sur des sujets politiques
+            ou de société qui lui sont chers, il lui arrive aussi d'être critiquée sur ses positions. En 2020, notamment, ses propos sur l'identité de genre font polémique,
+            en étant considérés transphobe par des militants de la cause trans et par certains fans.</p>
+        <p>Le succès planétaire de son heptalogie romanesque, des films adaptés ainsi que des travaux dérivés de Harry Potter lui ont permis d'acquérir une fortune 
+            considérable, dont une partie est régulièrement reversée à de nombreuses associations caritatives luttant contre la maladie et les inégalités sociales. 
+            J.F Forteroche est devenue un philantrope reconnue en cofondant notamment l'association Lumosqui œuvre pour la protection de l'enfance.</p>
+        <p>Il se tourne vers un public adulte à partir de 2012 en publiant le roman social Une place à prendre, puis en entamant une série policière l'année suivante,
+            sous un second nom de plume. Il devient également scénariste pour le cinéma à partir de 2016 en étendant son univers sorcier à travers la série de films Les
+            Animaux fantastiquess, dont le premier volet a connu un succès international.</p>
+        <h2>Les trois derniers chapitres du roman : L'Ange du passé.</h2>
+    <?php 
+        //connexion à la base de données
+        try
+        {
+            $db = new PDO('mysql:host=localhost;dbname=projet_4;charset=utf8','root','');
+        }
+        catch(Exeption $e)
+        {
+            die('Erreur :' .$e->getMessage);
+        }
+    ?>
+    <!--Les 3 derniers chapitres du roman-->
+    <table>
+            <tbody>
+                <thead>
+                    <tr>
+                        <td>Titre</td>
+                        <td>Chapitre</td>
+                    </tr>
+                </thead>
+            <?php        
+        //recupération des chapitres
+        $req = $db->query('SELECT id,titre,article FROM (SELECT id,titre,article, DATE_FORMAT(date_creation,\' %d/%m/%Y \') FROM chapitre ORDER BY id DESC LIMIT 0,3 ) AS date_creation_fr ORDER BY id ASC');
+        while($donnees = $req->fetch())
+        {
+
+            //instanciation des variables
+            $titre = strip_tags($donnees['titre']);
+            $article = strip_tags($donnees['article']);
+            ?> 
+                <tr>
+                    <td id = "td_titre"><?php echo substr($titre,0,100);?></td> 
+                    <td><?php echo substr($article,0,250);?><p><a href = "chapitre.php" > lire la suite...</a></p></td>
+                    
+                </tr> 
+            <?php            
+            }
+            ?>
     </body>
 </html>
