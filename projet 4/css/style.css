@@ -1,75 +1,68 @@
-#header{
 
-    display: flex;
-    background-color: rgb(165, 174, 181);
+header{
+    background-color: grey;
 }
 
-#image_ecriture{
+html{
 
-    height: 150px;
-
-}
-
-#connexion{
-
-margin-left: 500px;
-background-color: rgba(128,144,245);
-
-}
-
-#acteur{
-
-    margin-left:400px;
-
-}
-
-#jean{
-
-    height: 300px;
-    float: left;
-    margin-right: 20px;
-
-}
-
-#billet{
-
-    border: solid black 2px;
-    height: 400px;
-
-}
-
-#billet p {
-
-    margin-left: 10px;
-}
-
-.titre_billet{
-
-    margin-left: 150px;
-
-}
-
-#chapitre_1{
-
-    margin-left: 50px;
-
-}
-
-#alaska{
-
-    height: 300px;
-    float: right;
-
-}
-
-#lire{
-
-    margin-left:300px ;
+    width: 90%;
+    margin: auto;
     
 }
 
-footer{
+.connection{
+    display: flex;
+    justify-content: flex-end;
+}
 
-    background-color: rgb(165, 174, 181);
+.button{
+    display: flex;
+}
 
+h1,h3{
+    text-align: center;
+}
+
+table{
+    
+    border: 1px solid black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 20%;
+    width: 1000px;
+    text-align: center;
+    
+}
+
+thead{
+    font-weight: bold;
+}
+
+/*Page Accueil*/
+
+.accueil td{
+    border: 1px solid black;
+    min-width: 150px;
+}
+
+/*Page recup_chapitre*/
+.recup_chapitre td{
+    border: 1px solid black;
+    min-width: 150px;
+}
+
+i{
+    margin-left: 20px;
+}
+
+/*Page commentaire*/
+
+
+.commentaire table{
+    width: 600px;
+    margin-left: 10%;
+}
+
+.td_button{
+    text-align: end;
 }
