@@ -22,6 +22,7 @@ session_start();
                 <button><a href = "creer_billet">Creation billet</a></button>
                 <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
                 <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
+                <button><a href = "deconnection.php">Deconnection</a></button>
                 <?php
             }
             ?>

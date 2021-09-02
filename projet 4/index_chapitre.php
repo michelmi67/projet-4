@@ -1,9 +1,6 @@
 <?php 
     session_start();
-    if(!isset($_SESSION['id']))
-    {
-        header('Location:index.php');
-    }
+    
 ?>
 <!DOCTYPE html>
 
@@ -38,7 +35,7 @@
             <button><a href = index_chapitre.php>Chapitres</a></button>
         </div>
     </header>
-    <body class = "chapitre">
+    <body class = "index_chapitre">
         <h1>Bienvenue sur le blog de Jean Forteroche !</h1>
         <h3>acteur et écrivain</h3>
         <?php 
@@ -57,24 +54,25 @@
             $req = $db->query('SELECT id,titre,article,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM chapitre ORDER BY id  ');
             while($donnees = $req->fetch())
             {
-            //instanciation des variables
-            $article = strip_tags($donnees['article']);
-            ?> 
-            <table>
-                <tbody>
-                    <tr>
-                        <td id = "td_titre">
-                            <?php echo $donnees['titre'];?> 
-                    </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <?php echo substr($article,0,250);?><p><a href = "chapitre.php?chapitre=<?php echo $donnees['id'] ?>" > lire la suite...</a></p>
+                $article = strip_tags($donnees['article']);
+                ?> 
+                <table>
+                    <tbody>
+                        <tr>
+                            <td id = "td_titre">
+                                <?php echo $donnees['titre'];?> 
                         </td>
-                    </tr>            
-                </tbody>
-            </table>
-            <?php
+                        </tr>
+                        <tr>
+                            <td class = "article_<?php echo $donnees['id'] ?>">
+                                <?php echo substr($article,0,1000);?></br>
+                                <p><a href = "chapitre.php?chapitre=<?php echo $donnees['id'] ?>" > lire la suite...</a></p>
+                            </td>
+                                                
+                        </tr>            
+                    </tbody>
+                </table>
+                <?php
             }
         ?>
     </body>

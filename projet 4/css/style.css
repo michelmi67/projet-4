@@ -55,10 +55,19 @@ i{
     margin-left: 20px;
 }
 
-/*Page commentaire*/
 
+/*Page chapitre*/
+.suivant_precedent{
+    text-align: center;
 
-.commentaire table{
+}
+.suivant_precedent button{
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.chapitre table{
     width: 600px;
     margin-left: 10%;
 }

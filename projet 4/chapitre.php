@@ -24,6 +24,7 @@
                 <button><a href = "creer_billet">Creation billet</a></button>
                 <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
                 <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
+                <button><a href = "deconnection.php">Deconnection</a></button>
                 <?php
             }
             ?>
@@ -33,7 +34,7 @@
             <button><a href = index_chapitre.php>Chapitres</a></button>
         </div>
     </header>
-    <body class = "commentaire">
+    <body class = "chapitre">
         <?php
             //connexion à la base de données
             try
@@ -46,12 +47,17 @@
             }
 
             //récupération du chapitre
-           $req = $db->prepare('SELECT id,titre,article FROM chapitre WHERE id = ?');
+           $req = $db->prepare('SELECT id,titre,article FROM chapitre  WHERE id = ?');
            $req->execute(array($_GET['chapitre']));
            $donnees = $req->fetch();
            echo $donnees['titre'];
            echo $donnees['article'];
         ?>
+        <div class = "suivant_precedent">
+            <button id = "back"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']-1; ?>">Page précédente</a></button>
+            <button id = "next"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']+1; ?>">Page suivante</a></button>
+        </div>
+        <h2>Commentaires</h2>
         <form method = "post" action = "">
             <input type = "text" name = "pseudo" id = "pseudo" placeholder = "Pseudo" required/></br></br>
             <textarea name = "commentaire" id = "commentaire" placeholder = "Votre commentaire" rows = "6" cols = "75" required></textarea></br></br>
@@ -67,7 +73,7 @@
             $req->CloseCursor();
             
             //recupération des commentaire
-            $req = $db->prepare('SELECT auteur,message,DATE_FORMAT(date_creation,\'%d/%m/%Y\') AS date_creation_fr FROM commentaire WHERE id_chapitre = ?');
+            $req = $db->prepare('SELECT auteur,message,DATE_FORMAT(date_creation,\'%d/%m/%Y\') AS date_creation_fr FROM commentaire  WHERE id_chapitre = ? ORDER BY id DESC');
             $req->execute(array($_GET['chapitre']));
             while($donnees = $req->fetch())
             {
