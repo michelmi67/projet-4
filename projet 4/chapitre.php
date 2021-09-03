@@ -47,16 +47,34 @@
             }
 
             //récupération du chapitre
-           $req = $db->prepare('SELECT id,titre,article FROM chapitre  WHERE id = ?');
-           $req->execute(array($_GET['chapitre']));
-           $donnees = $req->fetch();
-           echo $donnees['titre'];
-           echo $donnees['article'];
-        ?>
-        <div class = "suivant_precedent">
-            <button id = "back"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']-1; ?>">Page précédente</a></button>
-            <button id = "next"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']+1; ?>">Page suivante</a></button>
-        </div>
+            $req = $db->prepare('SELECT id,titre,article FROM chapitre  WHERE id = ?');
+            $req->execute(array($_GET['chapitre']));
+            $donnees = $req->fetch();
+            echo $donnees['titre'];
+            echo $donnees['article'];
+    
+            // récupération du nombre d'ID dans la table chapitre
+            $req_2 = $db->query('SELECT COUNT(id) AS nb FROM chapitre');
+            $nb = $req_2->fetch();
+            if($nb = $donnees['id']-1)
+                {
+                    ?>
+                    <button id = "back"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']-1; ?>">Page précédente</a></button>
+                    <?php 
+                }   
+            if($nb < $donnees['id']+1)
+                {
+                    ?>
+                    <button id = "next"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']+1; ?>">Page suivante</a></button>
+                    <?php 
+                }   
+                
+           
+            
+            ?>
+        
+        <!--<button id = "next"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']+1; ?>">Page suivante</a></button>-->
+        
         <h2>Commentaires</h2>
         <form method = "post" action = "">
             <input type = "text" name = "pseudo" id = "pseudo" placeholder = "Pseudo" required/></br></br>
