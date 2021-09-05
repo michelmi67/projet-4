@@ -39,6 +39,7 @@
             <button><a href = index_chapitre.php>Chapitres</a></button>
         </div>
     </header>
+
     <body class = "recup_chapitre">
         <h1>Bienvenue sur le blog de Jean Forteroche !</h1>
         <h3>acteur et écrivain</h3>
@@ -54,47 +55,98 @@
             }
             ?>
             <table>
+                <thead>
+                    <th> Commentaire signalé <th>
+                    <tr>
+                        <td>ID</td>
+                        <td>ID chapitre</td>
+                        <td>Auteur</td>
+                        <td>Message</td>
+                        <td>Signaler</td>
+                        <td>Action</td>
+                        <td>Date</td>
+                    </tr> 
+                </thead>
                 <tbody>
-                    <thead>
+                <?php        
+                    //Chapitre
+                    $req = $db->query('SELECT id,id_chapitre,auteur,message,signaler,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire  WHERE signaler = \'oui\' ORDER BY date_creation');
+                    while($donnees = $req->fetch())
+                    {
+                        //instanciation des variables
+                        $id = $donnees['id'];
+                        $id_chapitre = $donnees['id_chapitre'];
+                        $auteur = $donnees['auteur'];
+                        $message = strip_tags($donnees['message']);
+                        $signaler = $donnees['signaler'];
+                        $date = $donnees['date_creation_fr'];
+                        ?> 
                         <tr>
-                            <td>ID</td>
-                            <td>ID chapitre</td>
-                            <td>Auteur</td>
-                            <td>Message</td>
-                            <td>Action</td>
-                            <td>Date</td>
-                        </tr>
-                    </thead>
-        <?php        
-        //Chapitre
-        $req = $db->query('SELECT id,id_chapitre,auteur,message,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire ORDER BY date_creation ');
-        while($donnees = $req->fetch())
-        {
-
-            //instanciation des variables
-            $id = $donnees['id'];
-            $id_chapitre = $donnees['id_chapitre'];
-            $auteur = $donnees['auteur'];
-            $message = strip_tags($donnees['message']);
-            $date = $donnees['date_creation_fr'];
-            ?> 
-                <tr>
-                    <td><?php echo $id; ?></td>
-                    <td ><?php echo $id_chapitre;?></td>
-                    <td><?php echo $auteur; ?></td>  
-                    <td><?php echo substr($message,0,100);?></td> 
-                    <td>
-                        <div class = "action"> 
-                            <a href = "chapitre.php?chapitre= <?php echo $donnees['id_chapitre']; ?>"><i class="far fa-eye"></i></a>
-                            <a href = "suprime_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-trash-alt"></i></a>
-                        </div>
-                    </td>
-                    <td><?php echo $date; ?></td>
-                </tr> 
-                <?php            
-            }
-            ?>
-            </tbody>
+                            <td><?php echo $id; ?></td>
+                            <td ><?php echo $id_chapitre;?></td>
+                            <td><?php echo $auteur; ?></td>  
+                            <td><?php echo substr($message,0,100);?></td>
+                            <td><?php echo $signaler; ?></td> 
+                            <td>
+                            <div class = "action"> 
+                                <a href = "chapitre.php?chapitre= <?php echo $donnees['id_chapitre']; ?>"><i class="far fa-eye"></i></a>
+                                <i class="far fa-tired"></i>
+                                <a href = "suprime_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                            </td>
+                            <td><?php echo $date; ?></td>
+                        </tr> 
+                        <?php            
+                    }
+                    $req->CloseCursor();
+                    ?>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                    <th> Commentaire<th>
+                    <tr>
+                        <td>ID</td>
+                        <td>ID chapitre</td>
+                        <td>Auteur</td>
+                        <td>Message</td>
+                        <td>Signaler</td>
+                        <td>Action</td>
+                        <td>Date</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php        
+                    //Chapitre
+                    $req = $db->query('SELECT id,id_chapitre,auteur,message,signaler,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire ORDER BY date_creation ');
+                    while($donnees = $req->fetch())
+                    {
+                        //instanciation des variables
+                        $id = $donnees['id'];
+                        $id_chapitre = $donnees['id_chapitre'];
+                        $auteur = $donnees['auteur'];
+                        $message = strip_tags($donnees['message']);
+                        $signaler = $donnees['signaler'];
+                        $date = $donnees['date_creation_fr'];
+                        ?> 
+                        <tr>
+                            <td><?php echo $id; ?></td>
+                            <td ><?php echo $id_chapitre;?></td>
+                            <td><?php echo $auteur; ?></td>  
+                            <td><?php echo substr($message,0,100);?></td>
+                            <td><?php echo $signaler; ?><td> 
+                            <div class = "action"> 
+                                <a href = "chapitre.php?chapitre= <?php echo $donnees['id_chapitre']; ?>"><i class="far fa-eye"></i></a>
+                                <i class="far fa-tired"></i>
+                                <a href = "suprime_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-trash-alt"></i></a>
+                            </div>
+                            </td>
+                            <td><?php echo $date; ?></td>
+                        </tr> 
+                        <?php            
+                    }
+                    ?>
+                </tbody>
         </table>
     </body>
 </html>
