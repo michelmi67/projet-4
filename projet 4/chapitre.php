@@ -52,46 +52,32 @@
             $donnees = $req->fetch();
             echo $donnees['titre'];
             echo $donnees['article'];
-    
-            // récupération du nombre d'ID dans la table chapitre
-            $req_2 = $db->query('SELECT COUNT(id) AS nb FROM chapitre');
-            $nb = $req_2->fetch();
-            if($nb = $donnees['id']-1)
-                {
-                    ?>
-                    <button id = "back"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']-1; ?>">Page précédente</a></button>
-                    <?php 
-                }   
-            if($nb < $donnees['id']+1)
-                {
-                    ?>
-                    <button id = "next"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']+1; ?>">Page suivante</a></button>
-                    <?php 
-                }   
-                
-           
-            
             ?>
-        
-        <!--<button id = "next"><a href = "chapitre.php?chapitre= <?php echo $donnees['id']+1; ?>">Page suivante</a></button>-->
         
         <h2>Commentaires</h2>
         <form method = "post" action = "">
-            <input type = "text" name = "pseudo" id = "pseudo" placeholder = "Pseudo" required/></br></br>
-            <textarea name = "commentaire" id = "commentaire" placeholder = "Votre commentaire" rows = "6" cols = "75" required></textarea></br></br>
+            <input type = "text" name = "pseudo" id = "pseudo" placeholder = "Pseudo" /></br></br>
+            <textarea name = "commentaire" id = "commentaire" placeholder = "Votre commentaire" rows = "6" cols = "75" ></textarea></br></br>
             <input type = "submit" value = "envoyé"/>
             <?php 
             if($_POST)
             {
-
                 //Envoi d'un commentaire
-                $req = $db->prepare('INSERT INTO commentaire (id_chapitre,auteur,message) VALUES (?,?,?)');
-                $req->execute(array($_GET['chapitre'],$_POST['pseudo'],$_POST['commentaire']));
+                $signaler = 'non';
+                $req = $db->prepare('INSERT INTO commentaire (id_chapitre,auteur,message,signaler) VALUES (?,?,?,?)');
+                $req->execute(array($_GET['chapitre'],$_POST['pseudo'],$_POST['commentaire'],$signaler));
+                ?>
+                    <pre>
+                            <?php var_dump($signaler); ?>
+                    </pre>
+                <?php
             } 
             $req->CloseCursor();
-            
+            ?>
+        </form>
+        <?php
             //recupération des commentaire
-            $req = $db->prepare('SELECT auteur,message,DATE_FORMAT(date_creation,\'%d/%m/%Y\') AS date_creation_fr FROM commentaire  WHERE id_chapitre = ? ORDER BY id DESC');
+            $req = $db->prepare('SELECT id,auteur,message,DATE_FORMAT(date_creation,\'%d/%m/%Y\') AS date_creation_fr FROM commentaire  WHERE id_chapitre = ? ORDER BY id DESC');
             $req->execute(array($_GET['chapitre']));
             while($donnees = $req->fetch())
             {
@@ -108,8 +94,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class = "td_button">
-                                <button><a href = "">signaler</a></button>
+                            <td>
+                                <button><a href = "signaler.php?commentaire=<?php echo $donnees['id'] ?>">signaler</button>
                             </td>
                         </tr>
                     </table>
@@ -117,6 +103,6 @@
 
             }
             ?>
-        </form>
+        
     </body>
 </html>
