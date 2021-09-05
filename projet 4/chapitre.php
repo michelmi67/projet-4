@@ -56,15 +56,15 @@
         
         <h2>Commentaires</h2>
         <form method = "post" action = "">
-            <input type = "text" name = "pseudo" id = "pseudo" placeholder = "Pseudo" /></br></br>
-            <textarea name = "commentaire" id = "commentaire" placeholder = "Votre commentaire" rows = "6" cols = "75" ></textarea></br></br>
+            <input type = "text" name = "pseudo" id = "pseudo" placeholder = "Pseudo" required/></br></br>
+            <textarea name = "commentaire" id = "commentaire" placeholder = "Votre commentaire" rows = "6" cols = "75" required ></textarea></br></br>
             <input type = "submit" value = "envoyé"/>
             <?php 
             if($_POST)
             {
                 //Envoi d'un commentaire
                 $signaler = 'non';
-                $req = $db->prepare('INSERT INTO commentaire (id_chapitre,auteur,message,signaler) VALUES (?,?,?,?)');
+                $req = $db->prepare('INSERT INTO commentaire (id_page,auteur,message,signaler) VALUES (?,?,?,?)');
                 $req->execute(array($_GET['chapitre'],$_POST['pseudo'],$_POST['commentaire'],$signaler));
                 ?>
                     <pre>
@@ -77,7 +77,7 @@
         </form>
         <?php
             //recupération des commentaire
-            $req = $db->prepare('SELECT id,auteur,message,DATE_FORMAT(date_creation,\'%d/%m/%Y\') AS date_creation_fr FROM commentaire  WHERE id_chapitre = ? ORDER BY id DESC');
+            $req = $db->prepare('SELECT id,auteur,message,DATE_FORMAT(date_creation,\'%d/%m/%Y\') AS date_creation_fr FROM commentaire  WHERE id_page = ? ORDER BY id DESC');
             $req->execute(array($_GET['chapitre']));
             while($donnees = $req->fetch())
             {
