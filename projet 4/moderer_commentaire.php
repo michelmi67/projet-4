@@ -19,6 +19,8 @@
     $message = 'commentaire modéré !';
     $signaler = 'non';
     $id = $_GET['commentaire'];
-    $req = $db->prepare('UPDATE commentaire SET message = ? signaler = ? WHERE id = ?');
+    $req = $db->prepare('UPDATE commentaire SET message = ?, signaler = ? WHERE id = ?');
     $req->execute(array($message,$signaler,$id));
+    $req->CloseCursor();
+    header('Location:recup_commentaire.php');
 ?>
