@@ -71,8 +71,7 @@
                 //modification titre
                 if($_POST)
                 {
-                    $titre = $_POST['modif_titre'];
-                    $id = $_GET['chapitre'];
+                    
                     $req = $db->prepare('UPDATE chapitre SET titre = ? WHERE id = ?');
                     $req->execute(array($_POST['modif_titre'],$_GET['chapitre']));
                     $req->CloseCursor();
@@ -90,8 +89,7 @@
                 //modification chapitre
                 if($_POST)
                 {
-                    $titre = $_POST['modif_titre'];
-                    $id = $_GET['chapitre'];
+                    
                     $req = $db->prepare('UPDATE chapitre SET article = ? WHERE id = ?');
                     $req->execute(array($_POST['modif_chapitre'],$_GET['chapitre']));
                     $req->CloseCursor();
