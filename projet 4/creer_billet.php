@@ -21,8 +21,7 @@
     <!--Inclusion du header -->
     <?php include('header.php'); ?>
     <body class = "interface">
-        <h1>Bienvenue sur le blog de Jean Forteroche !</h1>
-        <h3>acteur et écrivain</h3>
+        <h1>Creation d'un billet</h1>
         <div class = "button">
             <button><a href = "index.php">Accueil</a></button>
             <form action = "Deconnection.php" method = "post">

@@ -15,12 +15,10 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         
     </head>
-    <header>
     <!--Inclusion du header -->
     <?php include('header.php'); ?>
     <body class = "index_chapitre">
-        <h1>Bienvenue sur le blog de Jean Forteroche !</h1>
-        <h3>acteur et écrivain</h3>
+        <h1>L'ange du passé</h1>
         <?php 
             //connexion à la base de données
             try

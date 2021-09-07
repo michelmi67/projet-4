@@ -22,8 +22,7 @@
     <!--Inclusion du header -->
     <?php include('header.php'); ?>
     <body class = "recup_chapitre">
-        <h1>Bienvenue sur le blog de Jean Forteroche !</h1>
-        <h3>acteur et écrivain</h3>
+        <h1>Interface des commentaires</h1>
         <?php 
             //connexion à la base de données
             try
