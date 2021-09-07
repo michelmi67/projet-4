@@ -18,26 +18,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         <script src="https://cdn.tiny.cloud/1/03puxw65ydbv9n6fvxcaqfxnd9h3hk5c1hjm1afabuf62exq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
-    <header>
-        <div class = "connection">
-            <button><a href = connection.php>Connection admin</a></button>
-            <?php
-            if(isset($_SESSION['id']))
-            {
-                ?>
-                <button><a href = "creer_billet">Creation billet</a></button>
-                <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
-                <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
-                <button><a href = "deconnection.php">Deconnection</a></button>
-                <?php
-            }
-            ?>
-        </div>
-        <div class = "chapitre">
-            <button><a href = index.php>Accueil</a></button>
-            <button><a href = index_chapitre.php>Chapitres</a></button>
-        </div>
-    </header>
+    <!--Inclusion du header -->
+    <?php include('header.php'); ?>
     <body class = "interface">
         <h1>Bienvenue sur le blog de Jean Forteroche !</h1>
         <h3>acteur et écrivain</h3>

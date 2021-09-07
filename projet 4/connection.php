@@ -12,27 +12,8 @@ session_start();
         <!-- bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     </head>
-    <header>
-    <div class = "connection">
-            <button><a href = connection.php>Connection admin</a></button>
-            <?php
-            if(isset($_SESSION['id']))
-            {
-                ?>
-                <button><a href = "creer_billet">Creation billet</a></button>
-                <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
-                <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
-                <button><a href = "deconnection.php">Deconnection</a></button>
-                <?php
-            }
-            ?>
-        </div>
-        <div class = "chapitre">
-            <button><a href = index.php>Accueil</a></button>
-            <button><a href = index_chapitre.php>Chapitres</a></button>
-        </div>
-    </header>
-    <body>
+    <!--Inclusion du header -->
+    <?php include('header.php'); ?>    <body>
         <h1>Connection d'un administrateur</h1>
         <!--Formulaire d'inscription pour un admin -->
         <form method = "post" action = "">
