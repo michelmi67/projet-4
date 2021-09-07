@@ -69,7 +69,7 @@
                 </thead>
                 <tbody>
                 <?php        
-                    //Chapitre
+                    //Commentaire signalé
                     $req = $db->query('SELECT id,id_page,auteur,message,signaler,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire  WHERE signaler = \'oui\' ORDER BY date_creation');
                     while($donnees = $req->fetch())
                     {
@@ -89,7 +89,7 @@
                             <td><?php echo $signaler; ?></td> 
                             <td>
                             <div class = "action"> 
-                                <a href = "chapitre.php?chapitre= <?php echo $donnees['id_page']; ?>"><i class="far fa-eye"></i></a>
+                                <a href = "chapitre.php?chapitre= <?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
                                 <a href = "moderer_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-tired"></i>
                                 <a href = "suprime_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-trash-alt"></i></a>
                             </div>
@@ -117,7 +117,7 @@
                 </thead>
                 <tbody>
                     <?php        
-                    //Chapitre
+                    //Commentaire
                     $req = $db->query('SELECT id,id_page,auteur,message,signaler,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire ORDER BY date_creation ');
                     while($donnees = $req->fetch())
                     {
@@ -136,7 +136,7 @@
                             <td><?php echo substr($message,0,100);?></td>
                             <td><?php echo $signaler; ?><td> 
                             <div class = "action"> 
-                                <a href = "chapitre.php?chapitre= <?php echo $donnees['id_page']; ?>"><i class="far fa-eye"></i></a>
+                            <a href = "chapitre.php?chapitre= <?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
                                 <a href = "moderer_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-tired"></i>
                                 <a href = "suprime_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-trash-alt"></i></a>
                             </div>

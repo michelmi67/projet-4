@@ -52,7 +52,33 @@
             $donnees = $req->fetch();
             echo $donnees['titre'];
             echo $donnees['article'];
+            
+            //bouton suivant et précédent
+            $page_courante = (int)$_GET['chapitre'];
+            $req = $db->query('SELECT COUNT(id) from chapitre');
+            $donnees_2 = $req->fetch();
+            $count = (int)$donnees_2;
             ?>
+            <pre>
+                <?php var_dump($donnees['id']); ?>
+                <?php var_dump($page_courante); ?>
+                <?php var_dump($donnees_2) ?>
+                <?php var_dump($count); ?>
+            </pre>
+            <div class = "suivant_precedent">
+                <?php 
+                if($page_courante > 1){
+                    ?>
+                    <button><a href = "chapitre.php?chapitre=<?php echo $donnees['id']-1; ?>">précédent</a></button>
+                    <?php
+                }
+                if($page_courante != $count-1){
+                    ?>
+                    <button><a href = "chapitre.php?chapitre=<?php echo $donnees['id']+1; ?>">suivant</a></button>
+                    <?php
+                }
+                ?>
+            </div>
         
         <h2>Commentaires</h2>
         <form method = "post" action = "">
@@ -81,24 +107,26 @@
             $req->execute(array($_GET['chapitre']));
             while($donnees = $req->fetch())
             {
-                ?>
-                    <table>
-                        <tr>
-                            <td>
-                                </p><strong> Le <?php echo htmlspecialchars($donnees['date_creation_fr']), " par " , htmlspecialchars($donnees['auteur']);  ?> :</strong> </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <p><?php echo htmlspecialchars($donnees['message']) ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <button><a href = "signaler.php?commentaire=<?php echo $donnees['id'] ?>">signaler</button>
-                            </td>
-                        </tr>
-                    </table>
+                ?>  
+                    <div id = "commentaire_<?php echo $donnees['id'];?>">
+                        <table>
+                            <tr>
+                                <td>
+                                    </p><strong> Le <?php echo htmlspecialchars($donnees['date_creation_fr']), " par " , htmlspecialchars($donnees['auteur']);  ?> :</strong> </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p><?php echo htmlspecialchars($donnees['message']) ?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button><a href = "signaler.php?commentaire=<?php echo $donnees['id'] ?>">signaler</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>    
                 <?php
 
             }
