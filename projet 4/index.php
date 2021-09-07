@@ -79,7 +79,10 @@
                     
                 </tr> 
             <?php            
-            }
-            ?>
+        }
+        ?>
+        </table>
+        <!--Inclusion du footer -->
+        <?php include('footer.php') ?>
     </body>
 </html>

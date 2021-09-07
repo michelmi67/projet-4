@@ -1,6 +1,7 @@
 
-header{
+header, footer{
     background-color: grey;
+    color: white;
 }
 
 html{

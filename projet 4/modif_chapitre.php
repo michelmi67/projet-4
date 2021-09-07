@@ -78,8 +78,11 @@
                 }
                 ?>
             </textarea>
+
             <input type = "submit" value = "modifier"/>
         </form>
+        <!--Inclusion du footer -->
+        <?php include('footer.php') ?>
         <!-- script pour le textarea titre -->
         <script>
             tinymce.init({
@@ -97,10 +100,7 @@
             min_height: 600,
             toolbar_mode: 'floating',
         });
-        </script>
-
-        
-        <?php var_dump($_SESSION['id']); ?>   
+        </script>  
     </body>
 </html>
 

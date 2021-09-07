@@ -73,6 +73,7 @@ session_start();
             $req->CloseCursor();
         }
         ?>
-
+        <!--Inclusion du footer -->
+        <?php include('footer.php') ?>
     </body>
 </html>

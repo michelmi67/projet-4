@@ -71,8 +71,8 @@
                 $req->execute(array($_GET['titre'],$_GET['chapitre']));
             }
         ?>
-
-        <?php var_dump($_SESSION['id']); ?>   
+        <!--Inclusion du footer -->
+        <?php include('footer.php') ?>  
     </body>
 </html>
 
