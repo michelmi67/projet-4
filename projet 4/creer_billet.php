@@ -22,12 +22,6 @@
     <?php include('header.php'); ?>
     <body class = "interface">
         <h1>Creation d'un billet</h1>
-        <div class = "button">
-            <button><a href = "index.php">Accueil</a></button>
-            <form action = "Deconnection.php" method = "post">
-                <button type = "submit">Déconnection</button>
-            </form>
-        </div>
         <form method = "get" action = "">    
             <textarea id = "titre" name = "titre" placeholder = "Inserer votre Titre" ></textarea>
             <textarea id = "chapitre" name = "chapitre" placeholder = "Ecriver votre chapitre"></textarea>
