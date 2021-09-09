@@ -15,9 +15,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         
     </head>
-    <!--Inclusion du header -->
-    <?php include('header.php'); ?>
     <body class = "index_chapitre">
+        <!--Inclusion du header -->
+        <?php include('header.php'); ?>
         <h1>L'ange du passé</h1>
         <?php 
             //connexion à la base de données
@@ -40,13 +40,11 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td id = "td_titre">
-                                <?php echo $donnees['titre'];?> 
-                        </td>
+                            <td ><?php echo $donnees['titre'];?> </td>
                         </tr>
                         <tr>
                             <td class = "article_<?php echo $donnees['id'] ?>">
-                                <?php echo substr($article,0,1000);?></br>
+                                <?php echo substr($article,0,1000);?><br>
                                 <p><a href = "chapitre.php?chapitre=<?php echo $donnees['id'] ?>" > lire la suite...</a></p>
                             </td>
                                                 

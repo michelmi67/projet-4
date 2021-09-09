@@ -1,20 +1,20 @@
 <header>
         <div class = "connection">
-            <button><a href = connection.php>Connection admin</a></button>
+            <a href = "connection.php" class = "button">Connection admin</a>
             <?php
             if(isset($_SESSION['id']))
             {
                 ?>
-                <button><a href = "creer_billet">Creation billet</a></button>
-                <button><a href = "recup_chapitre.php">Interface chapitre</a></button>
-                <button><a href = "recup_commentaire.php">Interface commentaire</a></button>
-                <button><a href = "deconnection.php">Deconnection</a></button>
+                <a href = "creer_billet" class = "button">Creation billet</a>
+                <a href = "recup_chapitre.php" class = "button">Interface chapitre</a>
+                <a href = "recup_commentaire.php" class = "button">Interface commentaire</a>
+                <a href = "deconnection.php" class = "button">Deconnection</a>
                 <?php
             }
             ?>
         </div>
         <div class = "chapitre">
-            <button><a href = index.php>Accueil</a></button>
-            <button><a href = index_chapitre.php>Chapitres</a></button>
+            <a href = "index.php" class = "button">Accueil</a>
+            <a href = "index_chapitre.php" class = "button">Chapitres</a>
         </div>
     </header>

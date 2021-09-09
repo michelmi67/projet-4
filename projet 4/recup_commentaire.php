@@ -19,10 +19,10 @@
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/2e63600e57.js" crossorigin="anonymous"></script>
     </head>
-    <!--Inclusion du header -->
-    <?php include('header.php'); ?>
     <body class = "recup_chapitre">
-        <h1>Interface des commentaires</h1>
+        <!--Inclusion du header -->
+        <?php include('header.php'); ?>
+        <h1>Interface</h1>
         <?php 
             //connexion à la base de données
             try
@@ -36,7 +36,9 @@
             ?>
             <table>
                 <thead>
-                    <th> Commentaire signalé <th>
+                    <tr >
+                        <td colspan = "7">Commentaire signalé</td>
+                    </tr>
                     <tr>
                         <td>ID</td>
                         <td>ID page</td>
@@ -69,9 +71,9 @@
                             <td><?php echo $signaler; ?></td> 
                             <td>
                             <div class = "action"> 
-                                <a href = "chapitre.php?chapitre= <?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
-                                <a href = "moderer_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-tired"></i>
-                                <a href = "suprime_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-trash-alt"></i></a>
+                                <a href = "chapitre.php?chapitre=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
+                                <a href = "moderer_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-tired"></i></a>
+                                <a href = "suprime_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
                             </div>
                             </td>
                             <td><?php echo $date; ?></td>
@@ -84,7 +86,7 @@
             </table>
             <table>
                 <thead>
-                    <th> Commentaire<th>
+                    <tr><td colspan = "7">Commentaire</td></tr>
                     <tr>
                         <td>ID</td>
                         <td>ID page</td>
@@ -116,9 +118,9 @@
                             <td><?php echo substr($message,0,100);?></td>
                             <td><?php echo $signaler; ?><td> 
                             <div class = "action"> 
-                            <a href = "chapitre.php?chapitre= <?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
-                                <a href = "moderer_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-tired"></i>
-                                <a href = "suprime_commentaire.php?commentaire= <?php echo $donnees['id']; ?>"><i class="far fa-trash-alt"></i></a>
+                            <a href = "chapitre.php?chapitre=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
+                                <a href = "moderer_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-tired"></i></a>
+                                <a href = "suprime_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
                             </div>
                             </td>
                             <td><?php echo $date; ?></td>
@@ -128,7 +130,5 @@
                     ?>
                 </tbody>
         </table>
-        <!--Inclusion du footer -->
-        <?php include('footer.php') ?>
     </body>
 </html>

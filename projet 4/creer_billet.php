@@ -18,11 +18,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         <script src="https://cdn.tiny.cloud/1/03puxw65ydbv9n6fvxcaqfxnd9h3hk5c1hjm1afabuf62exq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
-    <!--Inclusion du header -->
-    <?php include('header.php'); ?>
     <body class = "interface">
+        <!--Inclusion du header -->
+        <?php include('header.php'); ?>
         <h1>Creation d'un billet</h1>
-        <form method = "get" action = "">    
+        <form method = "get" action = "creer_billet.php">    
             <textarea id = "titre" name = "titre" placeholder = "Inserer votre Titre" ></textarea>
             <textarea id = "chapitre" name = "chapitre" placeholder = "Ecriver votre chapitre"></textarea>
             <input type = "submit" value = "envoyé"/>

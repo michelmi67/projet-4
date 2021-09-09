@@ -4,7 +4,7 @@
 ?>
 <!DOCTYPE html>
 
-<html lang="fr">
+<html lang ="fr">
     <head>
         <meta charset="UTF-8"/>
         <title>Projet 4</title>
@@ -56,13 +56,13 @@
     ?>
     <!--Les 3 derniers chapitres du roman-->
     <table>
-            <tbody>
-                <thead>
-                    <tr>
-                        <td>Titre</td>
-                        <td>Chapitre</td>
-                    </tr>
-                </thead>
+        <thead>
+            <tr>
+                <td>Titre</td>
+                <td>Chapitre</td>
+            </tr>
+        </thead>
+        <tbody>
             <?php        
         //recupération des chapitres
         $req = $db->query('SELECT id,titre,article FROM (SELECT id,titre,article, DATE_FORMAT(date_creation,\' %d/%m/%Y \') FROM chapitre ORDER BY id DESC LIMIT 0,3 ) AS date_creation_fr ORDER BY id ASC');
@@ -74,7 +74,7 @@
             $article = strip_tags($donnees['article']);
             ?> 
                 <tr>
-                    <td id = "td_titre"><?php echo substr($titre,0,100);?></td> 
+                    <td><?php echo substr($titre,0,100);?></td> 
                     <td><?php echo substr($article,0,250);?><p><a href = "chapitre.php?chapitre=<?php echo $donnees['id'] ?>" > lire la suite...</a></p></td>
                     
                 </tr> 

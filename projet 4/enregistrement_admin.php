@@ -2,23 +2,23 @@
 session_start();
 ?>
 <!DOCTYPE HTML>
-<html>
+<html lang = "fr">
     <head>
         <title>Blog de Jean Forteroche</title>
-        <meta charset = " utf-8"/>
+        <meta charset = "utf-8"/>
     </head>
-    <header>
-        <h1>Inscription d'un administrateur</h1>
-    </header>
     <body>
+        <header>
+            <h1>Inscription d'un administrateur</h1>
+        </header>
         <!--Formulaire d'inscription pour un admin -->
-        <form method = "post" action = "">
+        <form method = "post" action = "enregistrement_admin.php">
             <p>
-                <label for = "nom">Nom </label><input type = "text" name = "nom" id = "nom" required/></br></br>
-                <label for = "prenom">Prénom </label><input type = "text" name = "prenom" id = "prenom" required/></br></br>
-                <label for = "email">Email </label><input type = "email" name = "email" id = "email" required/></br></br>
-                <label for = "pass">Mot de passe </label><input type = "password" name = "pass" id = "pass" required/></br></br>
-                <label for = "pass_verification">Vérification du mot de passe </label><input type = "password" name = "pass_verification" id = "pass_verification" required/></br></br>
+                <label for = "nom">Nom </label><input type = "text" name = "nom" id = "nom" required/><br><br>
+                <label for = "prenom">Prénom </label><input type = "text" name = "prenom" id = "prenom" required/><br><br>
+                <label for = "email">Email </label><input type = "email" name = "email" id = "email" required/><br><br>
+                <label for = "pass">Mot de passe </label><input type = "password" name = "pass" id = "pass" required/><br><br>
+                <label for = "pass_verification">Vérification du mot de passe </label><input type = "password" name = "pass_verification" id = "pass_verification" required/><br><br>
                 <input type = "submit" value = "envoyé"/>
             </p>
         </form>
@@ -64,7 +64,5 @@ session_start();
             $req->CloseCursor();
         }
         ?>
-        <!--Inclusion du footer -->
-        <?php include('footer.php') ?>
     </body>
 </html>

@@ -1,4 +1,8 @@
 
+header{
+    height: 80px;
+}
+
 header, footer{
     background-color: grey;
     color: white;
@@ -17,7 +21,11 @@ html{
 }
 
 .button{
-    display: flex;
+    border: solid 1px black;
+    margin: 5px;
+    background-color: rgb(204,214,222);
+    padding: 2px;
+
 }
 
 h1,h3{
@@ -62,7 +70,7 @@ i{
     text-align: center;
 
 }
-.suivant_precedent button{
+.suivant_precedent .button{
     margin-left: 250px;
     margin-right: 250px;
     margin-top: 50px;
