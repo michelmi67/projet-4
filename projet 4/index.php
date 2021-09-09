@@ -15,9 +15,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         <script src="https://cdn.tiny.cloud/1/03puxw65ydbv9n6fvxcaqfxnd9h3hk5c1hjm1afabuf62exq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     </head>
-    <!--Inclusion du header -->
-    <?php include('header.php'); ?>
     <body class = "accueil" >
+        <!--Inclusion du header -->
+        <?php include('header.php'); ?>
         <h1>Bienvenue sur le blog de Jean Forteroche !</h1>
         <h3>acteur et écrivain</h3>
         <p><img src = "image/jean.jpg" alt = "photo de jean forteroche"/></p>
@@ -81,7 +81,8 @@
             <?php            
         }
         ?>
-        </table>
+        </tbody>
+    </table>
         <!--Inclusion du footer -->
         <?php include('footer.php') ?>
     </body>

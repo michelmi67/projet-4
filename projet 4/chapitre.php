@@ -37,16 +37,11 @@
             
             //bouton suivant et précédent
             $page_courante = (int)$_GET['chapitre'];
-            $req = $db->query('SELECT COUNT(id) from chapitre');
-            $donnees_2 = $req->fetch();
-            $count = (int)$donnees_2;
+            $req_2 =  $db->prepare('SELECT count(*) as total from chapitre');
+            $req_2->execute();
+            $count = (int)$req_2->fetchColumn();
             ?>
-            <pre>
-                <?php var_dump($donnees['id']); ?>
-                <?php var_dump($page_courante); ?>
-                <?php var_dump($donnees_2) ?>
-                <?php var_dump($count); ?>
-            </pre>
+            
             <div class = "suivant_precedent">
                 <?php 
                 if($page_courante > 1){
@@ -54,7 +49,7 @@
                     <button><a href = "chapitre.php?chapitre=<?php echo $donnees['id']-1; ?>">précédent</a></button>
                     <?php
                 }
-                if($page_courante != $count-1){
+                if($page_courante != $count){
                     ?>
                     <button><a href = "chapitre.php?chapitre=<?php echo $donnees['id']+1; ?>">suivant</a></button>
                     <?php

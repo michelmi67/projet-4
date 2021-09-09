@@ -7,7 +7,7 @@
     ?>
 <!DOCTYPE html>
 
-<html lang="fr" id = >
+<html lang="fr"  >
     <head>
         <meta charset="UTF-8"/>
         <title>Projet 4</title>
