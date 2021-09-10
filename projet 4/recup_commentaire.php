@@ -43,7 +43,7 @@
                         <td>ID</td>
                         <td>ID page</td>
                         <td>Auteur</td>
-                        <td>Message</td>
+                        <td >Message</td>
                         <td>Signaler</td>
                         <td>Action</td>
                         <td>Date</td>
@@ -72,7 +72,7 @@
                             <td>
                             <div class = "action"> 
                                 <a href = "chapitre.php?chapitre=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
-                                <a href = "moderer_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-tired"></i></a>
+                                <a href = "moderer_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-tired" class = "moderer"></i></a>
                                 <a href = "suprime_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
                             </div>
                             </td>
@@ -130,5 +130,7 @@
                     ?>
                 </tbody>
         </table>
+        <!-- javascript -->
+        <script src = "js/main.js"></script>
     </body>
 </html>
