@@ -93,7 +93,9 @@
             min_height: 600,
             toolbar_mode: 'floating',
         });
-        </script>  
+        </script>
+        <!-- javascript -->
+        <script src = "js/main.js"></script>  
     </body>
 </html>
 

@@ -66,7 +66,9 @@
             }
         ?>
         <!--Inclusion du footer -->
-        <?php include('footer.php') ?>  
+        <?php include('footer.php') ?>
+        <!-- javascript -->
+        <script src = "js/main.js"></script>  
     </body>
 </html>
 

@@ -99,7 +99,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href = "signaler.php?commentaire=<?php echo $donnees['id'] ?>" class = "button">signaler</a>
+                                    <a href = "signaler.php?commentaire=<?php echo $donnees['id'] ?>" class = "button" id = "button_signaler">signaler</a>
                                 </td>
                             </tr>
                         </table>
@@ -110,5 +110,7 @@
             ?>
         <!--Inclusion du footer -->
         <?php include('footer.php') ?>
+        <!-- javascript -->
+        <script src = "js/main.js"></script>
     </body>
 </html>
