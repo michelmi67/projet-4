@@ -1,11 +1,10 @@
-//bouton connection admin disparait si un admin est connecté
+// Supression du bouton connection si on est déja connecté
+let button_connection = document.getElementById('button_connection');
+let button_deconnection = document.getElementById('button_deconnection');
+button_deconnection.style.display = 'block';
 
-let connection_admin = document.getElementById("#button_admin");
-let deconnection_admin = document.getElementById("#button_deconnection");
-
-if(deconnection_admin){
-    connection_admin.style.display = "none";
-}
-
+if(button_deconnection.style.display == "block"){
+    button_connection.style.display = 'none';
+}    
 
 
