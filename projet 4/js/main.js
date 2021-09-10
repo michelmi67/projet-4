@@ -1,9 +1,11 @@
-//Bouton suivant/précédent des chapitres
+//bouton connection admin disparait si un admin est connecté
 
-//instanciation des variables
-const slides = document.querySelectorAll(".message");
-let backButton = document.querySelector("#back");
-let nextButton = document.querySelector("#next");
+let connection_admin = document.getElementById("#button_admin");
+let deconnection_admin = document.getElementById("#button_deconnection");
 
-//instanciation d'un nouvel Objet Button
-let Button_1 = new Button(slides,backButton,)
+if(deconnection_admin){
+    connection_admin.style.display = "none";
+}
+
+
+

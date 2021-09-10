@@ -64,7 +64,7 @@
         </thead>
         <tbody>
             <?php        
-        //recupération des chapitres
+        //recupération des 3 derniers chapitre
         $req = $db->query('SELECT id,titre,article FROM (SELECT id,titre,article, DATE_FORMAT(date_creation,\' %d/%m/%Y \') FROM chapitre ORDER BY id DESC LIMIT 0,3 ) AS date_creation_fr ORDER BY id ASC');
         while($donnees = $req->fetch())
         {
@@ -85,5 +85,7 @@
     </table>
         <!--Inclusion du footer -->
         <?php include('footer.php') ?>
+        <!-- javascript -->
+        <script src = "js/main.js"></script>
     </body>
 </html>
