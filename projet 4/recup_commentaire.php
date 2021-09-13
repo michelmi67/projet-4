@@ -19,10 +19,10 @@
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/2e63600e57.js" crossorigin="anonymous"></script>
     </head>
-    <body class = "recup_chapitre">
+    <body class = "recup_article">
         <!--Inclusion du header -->
         <?php include('header.php'); ?>
-        <h1>Interface</h1>
+        <h1>Interface des commentaires</h1>
         <?php 
             //connexion à la base de données
             try
@@ -43,7 +43,7 @@
                         <td>ID</td>
                         <td>ID page</td>
                         <td>Auteur</td>
-                        <td >Message</td>
+                        <td >Texte</td>
                         <td>Signaler</td>
                         <td>Moderer</td>
                         <td>Action</td>
@@ -74,7 +74,7 @@
                             <td><?php echo $moderer ; ?></td>
                             <td>
                             <div class = "action"> 
-                                <a href = "chapitre.php?chapitre=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
+                                <a href = "article.php?texte=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
                                 <a href = "moderer_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-tired" class = "moderer"></i></a>
                                 <a href = "suprime_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
                             </div>
@@ -94,7 +94,7 @@
                         <td>ID</td>
                         <td>ID page</td>
                         <td>Auteur</td>
-                        <td>Message</td>
+                        <td>Texte</td>
                         <td>Signaler</td>
                         <td>Modéré</td>
                         <td>Action</td>
@@ -125,7 +125,7 @@
                             <td><?php echo $moderer; ?></td>
                             <td>
                                 <div class = "action"> 
-                                    <a href = "chapitre.php?chapitre=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
+                                    <a href = "article.php?texte=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
                                     <a href = "moderer_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-tired"></i></a>
                                     <a href = "suprime_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
                                 </div>

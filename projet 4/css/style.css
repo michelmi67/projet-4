@@ -55,8 +55,8 @@ thead{
     min-width: 150px;
 }
 
-/*Page recup_chapitre*/
-.recup_chapitre td{
+/*Page recup_article*/
+.recup_article td{
     border: 1px solid black;
     min-width: 150px;
 }
@@ -66,7 +66,7 @@ i{
 }
 
 
-/*Page chapitre*/
+/*Page article*/
 .suivant_precedent{
     text-align: center;
 
@@ -77,7 +77,7 @@ i{
     margin-top: 50px;
     margin-bottom: 50px;
 }
-.chapitre table{
+.texte table{
     width: 600px;
     margin-left: 10%;
     

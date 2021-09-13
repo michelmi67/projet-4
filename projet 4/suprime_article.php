@@ -15,8 +15,8 @@
         die('Erreur : ' .$e->getMessage());
     }
 
-    //Supression d'un chapitre
-    $req = $db->prepare('DELETE  FROM chapitre WHERE id = ?');
-    $req->execute(array($_GET['chapitre']));
-    header('Location:recup_chapitre.php');
+    //Supression d'un article
+    $req = $db->prepare('DELETE  FROM article WHERE id = ?');
+    $req->execute(array($_GET['texte']));
+    header('Location:recup_article.php');
 ?>

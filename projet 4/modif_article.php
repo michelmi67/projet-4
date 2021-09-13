@@ -34,12 +34,15 @@
                 die('Erreur : ' .$e->getMessage());
             }
         ?>
-        <form method = "post" action = "modif_chapitre.php">    
+        <?php
+  
+        ?>
+        <form method = "post" action = "">    
             <textarea id = "modif_titre" name = "modif_titre" placeholder = "Inserer votre Titre" >
                 <?php
                 //Récupération du Titre
-                $req = $db->prepare('SELECT id,titre FROM chapitre where id = ?');
-                $req->execute(array($_GET['chapitre']));
+                $req = $db->prepare('SELECT id,titre FROM article where id = ?');
+                $req->execute(array($_GET['texte']));
                 $donnees = $req->fetch();
                 echo $donnees['titre'];
                 $req->CloseCursor();
@@ -47,55 +50,54 @@
                 if($_POST)
                 {
                     
-                    $req = $db->prepare('UPDATE chapitre SET titre = ? WHERE id = ?');
-                    $req->execute(array($_POST['modif_titre'],$_GET['chapitre']));
+                    $req = $db->prepare('UPDATE article SET titre = ? WHERE id = ?');
+                    $req->execute(array($_POST['modif_titre'],$_GET['texte']));
                     $req->CloseCursor();
                 }
                 ?>
             </textarea>
-            <textarea id = "modif_chapitre" name = "modif_chapitre" placeholder = "Ecriver votre chapitre">
+            <textarea id = "modif_texte" name = "modif_texte" placeholder = "Ecriver votre texte">
             <?php
                 //Récupération du contenu
-                $req = $db->prepare('SELECT id,article FROM chapitre where id = ?');
-                $req->execute(array($_GET['chapitre']));
+                $req = $db->prepare('SELECT id,texte FROM article WHERE id = ?');
+                $req->execute(array($_GET['texte']));
                 $donnees = $req->fetch();
-                echo $donnees['article'];
+                echo $donnees['texte'];
                 $req->CloseCursor();
-                //modification chapitre
+                //modification article
                 if($_POST)
                 {
                     
-                    $req = $db->prepare('UPDATE chapitre SET article = ? WHERE id = ?');
-                    $req->execute(array($_POST['modif_chapitre'],$_GET['chapitre']));
+                    $req = $db->prepare('UPDATE article SET texte = ? WHERE id = ?');
+                    $req->execute(array($_POST['modif_texte'],$_GET['texte']));
                     $req->CloseCursor();
                 }
                 ?>
             </textarea>
-
             <input type = "submit" value = "modifier"/>
-        </form>
-        <!--Inclusion du footer -->
-        <?php include('footer.php') ?>
-        <!-- script pour le textarea titre -->
-        <script>
-            tinymce.init({
-            selector: '#modif_titre',
-            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table lists',
-            max_height: 150,
-            toolbar_mode: 'floating',
-            });    
-        </script>
-         <!-- script pour le textarea chapitre -->
-        <script>
-            tinymce.init({
-            selector: '#modif_chapitre',
-            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table lists',
-            min_height: 600,
-            toolbar_mode: 'floating',
-        });
-        </script>
-        <!-- javascript -->
-        <script src = "js/main.js"></script>  
+            </form>
+            <!--Inclusion du footer -->
+            <?php include('footer.php') ?>
+            <!-- script pour le textarea titre -->
+            <script>
+                tinymce.init({
+                selector: '#modif_titre',
+                plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table lists',
+                max_height: 150,
+                toolbar_mode: 'floating',
+                });    
+            </script>
+            <!-- script pour le textarea texte -->
+            <script>
+                tinymce.init({
+                selector: '#modif_texte',
+                plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table lists',
+                min_height: 600,
+                toolbar_mode: 'floating',
+            });
+            </script>
+            <!-- javascript -->
+            <script src = "js/main.js"></script>  
     </body>
 </html>
 

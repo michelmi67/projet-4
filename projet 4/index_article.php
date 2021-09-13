@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
         
     </head>
-    <body class = "index_chapitre">
+    <body class = "index_texte">
         <!--Inclusion du header -->
         <?php include('header.php'); ?>
         <h1>L'ange du passé</h1>
@@ -31,11 +31,11 @@
             }
 
             
-            //Chapitre
-            $req = $db->query('SELECT id,titre,article,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM chapitre ORDER BY id  ');
+            //Article
+            $req = $db->query('SELECT id,titre,texte,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM article ORDER BY id  ');
             while($donnees = $req->fetch())
             {
-                $article = strip_tags($donnees['article']);
+                $texte = strip_tags($donnees['texte']);
                 ?> 
                 <table>
                     <tbody>
@@ -43,9 +43,9 @@
                             <td ><?php echo $donnees['titre'];?> </td>
                         </tr>
                         <tr>
-                            <td class = "article_<?php echo $donnees['id'] ?>">
-                                <?php echo substr($article,0,1000);?><br>
-                                <p><a href = "chapitre.php?chapitre=<?php echo $donnees['id'] ?>" > lire la suite...</a></p>
+                            <td class = "texte_<?php echo $donnees['id'] ?>">
+                                <?php echo substr($texte,0,1000);?><br>
+                                <p><a href = "article.php?texte=<?php echo $donnees['id'] ?>" > lire la suite...</a></p>
                             </td>
                                                 
                         </tr>            

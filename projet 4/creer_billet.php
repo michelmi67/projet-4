@@ -24,7 +24,7 @@
         <h1>Creation d'un billet</h1>
         <form method = "get" action = "creer_billet.php">    
             <textarea id = "titre" name = "titre" placeholder = "Inserer votre Titre" ></textarea>
-            <textarea id = "chapitre" name = "chapitre" placeholder = "Ecriver votre chapitre"></textarea>
+            <textarea id = "texte" name = "texte" placeholder = "Ecriver votre texte"></textarea>
             <input type = "submit" value = "envoyé"/>
         </form>
         <!-- script pour le textarea titre -->
@@ -36,10 +36,10 @@
             toolbar_mode: 'floating',
             });    
         </script>
-         <!-- script pour le textarea chapitre -->
+         <!-- script pour le textarea texte -->
         <script>
             tinymce.init({
-            selector: '#chapitre',
+            selector: '#texte',
             plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak table lists',
             min_height: 600,
             toolbar_mode: 'floating',
@@ -60,9 +60,9 @@
             //Si des données sont envoyé
             if($_GET)
             {
-              //Envoie d'un titre et chapitre
-                $req = $db->prepare('INSERT INTO chapitre (titre,article) VALUES (?,?)');
-                $req->execute(array($_GET['titre'],$_GET['chapitre']));
+              //Envoie d'un titre et d'un texte
+                $req = $db->prepare('INSERT INTO article (titre,texte) VALUES (?,?)');
+                $req->execute(array($_GET['titre'],$_GET['texte']));
             }
         ?>
         <!--Inclusion du footer -->

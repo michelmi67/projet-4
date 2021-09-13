@@ -42,7 +42,7 @@
         <p>Il se tourne vers un public adulte à partir de 2012 en publiant le roman social Une place à prendre, puis en entamant une série policière l'année suivante,
             sous un second nom de plume. Il devient également scénariste pour le cinéma à partir de 2016 en étendant son univers sorcier à travers la série de films Les
             Animaux fantastiquess, dont le premier volet a connu un succès international.</p>
-        <h2>Les trois derniers chapitres du roman : L'Ange du passé.</h2>
+        <h2>Les trois derniers articles du roman : L'Ange du passé.</h2>
     <?php 
         //connexion à la base de données
         try
@@ -54,28 +54,28 @@
             die('Erreur :' .$e->getMessage);
         }
     ?>
-    <!--Les 3 derniers chapitres du roman-->
+    <!--Les 3 derniers articles du roman-->
     <table>
         <thead>
             <tr>
                 <td>Titre</td>
-                <td>Chapitre</td>
+                <td>Texte</td>
             </tr>
         </thead>
         <tbody>
             <?php        
-        //recupération des 3 derniers chapitre
-        $req = $db->query('SELECT id,titre,article FROM (SELECT id,titre,article, DATE_FORMAT(date_creation,\' %d/%m/%Y \') FROM chapitre ORDER BY id DESC LIMIT 0,3 ) AS date_creation_fr ORDER BY id ASC');
+        //recupération des 3 derniers articles
+        $req = $db->query('SELECT id,titre,texte FROM (SELECT id,titre,texte, DATE_FORMAT(date_creation,\' %d/%m/%Y \') FROM article ORDER BY id DESC LIMIT 0,3 ) AS date_creation_fr ORDER BY id ASC');
         while($donnees = $req->fetch())
         {
 
             //instanciation des variables
             $titre = strip_tags($donnees['titre']);
-            $article = strip_tags($donnees['article']);
+            $texte = strip_tags($donnees['texte']);
             ?> 
                 <tr>
                     <td><?php echo substr($titre,0,100);?></td> 
-                    <td><?php echo substr($article,0,250);?><p><a href = "chapitre.php?chapitre=<?php echo $donnees['id'] ?>" > lire la suite...</a></p></td>
+                    <td><?php echo substr($texte,0,250);?><p><a href = "article.php?texte=<?php echo $donnees['id'] ?>" > lire la suite...</a></p></td>
                     
                 </tr> 
             <?php            

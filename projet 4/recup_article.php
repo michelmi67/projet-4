@@ -19,10 +19,10 @@
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/2e63600e57.js" crossorigin="anonymous"></script>
     </head>
-    <body class = "recup_chapitre">
+    <body class = "recup_article">
         <!--Inclusion du header -->
         <?php include('header.php'); ?>
-        <h1>Interface des chapitres</h1>
+        <h1>Interface des articles</h1>
         <?php 
             //connexion à la base de données
             try
@@ -39,28 +39,28 @@
                     <tr>
                         <td>ID</td>
                         <td>Titre</td>
-                        <td>Chapitre</td>
+                        <td>Texte</td>
                         <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
                     <?php        
-                    //Chapitre
-                    $req = $db->query('SELECT id,titre,article, DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM chapitre ORDER BY date_creation ');
+                    //Article
+                    $req = $db->query('SELECT id,titre,texte, DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM article ORDER BY id ');
                     while($donnees = $req->fetch())
                     {
                         //instanciation des variables
                         $titre = strip_tags($donnees['titre']);
-                        $article = strip_tags($donnees['article']);
+                        $texte = strip_tags($donnees['texte']);
                         ?> 
                         <tr>
                             <td><?php echo $donnees['id']; ?></td>
                             <td><?php echo substr($titre,0,50);?></td> 
-                            <td><?php echo substr($article,0,100);?></td>
+                            <td><?php echo substr($texte,0,100);?></td>
                             <td>
-                                <a href = "chapitre.php?chapitre=<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
-                                <a href = "modif_chapitre.php?chapitre=<?php echo $donnees['id'];?>"><i class="fas fa-pen"></i></a>
-                                <a href = "suprime_chapitre.php?chapitre=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
+                                <a href = "article.php?texte=<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
+                                <a href = "modif_article.php?texte=<?php echo $donnees['id'];?>"><i class="fas fa-pen"></i></a>
+                                <a href = "suprime_article.php?texte=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr> 
                         <?php            
