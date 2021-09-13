@@ -7,4 +7,3 @@ if(button_deconnection.style.display == "block"){
     button_connection.style.display = 'none';
 }    
 
-
