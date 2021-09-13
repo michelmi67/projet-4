@@ -16,10 +16,11 @@
     }
 
     //moderer un commentaire
-   // $message = 'commentaire modéré !';
-   // $id = $_GET['commentaire'];
-   // $req = $db->prepare('UPDATE commentaire SET message = ?, signaler = ? WHERE id = ?');
-   // $req->execute(array($message,$message,$id));
-   // $req->CloseCursor();
+    $signaler = "false";
+    $moderer = "true";
+    $id = $_GET['commentaire'];
+    $req = $db->prepare('UPDATE commentaire SET signaler = ?, moderer = ? WHERE id = ?');
+    $req->execute(array($signaler,$moderer,$id));
+    $req->CloseCursor();
     header('Location:recup_commentaire.php');
 ?>

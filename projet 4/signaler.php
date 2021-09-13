@@ -11,7 +11,7 @@
         die('Erreur :' .$e->getMessage);
     }
                                 
-    $signaler = 'oui';
+    $signaler = "true";
     $req = $db->prepare('UPDATE commentaire SET signaler = ? WHERE id = ? ');
     $req->execute(array($signaler,$_GET['commentaire']));
     $req->CloseCursor();

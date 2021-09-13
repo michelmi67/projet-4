@@ -40,6 +40,7 @@
             $req_2 =  $db->prepare('SELECT count(*) as total from chapitre');
             $req_2->execute();
             $count = (int)$req_2->fetchColumn();
+            $req_2->CloseCursor();
             ?>
             
             <div class = "suivant_precedent">
@@ -58,7 +59,7 @@
             </div>
         
         <h2>Commentaires</h2>
-        <form method = "post" action = "chapitre.php">
+        <form method = "post" action = "chapitre.php?chapitre=<?php echo $donnees['id']?>">
             <input type = "text" name = "pseudo" id = "pseudo" placeholder = "Pseudo" required/><br><br>
             <textarea name = "commentaire" id = "commentaire" placeholder = "Votre commentaire" rows = "6" cols = "75" required ></textarea><br><br>
             <input type = "submit" value = "envoyé"/>
@@ -66,25 +67,24 @@
             if($_POST)
             {
                 //Envoi d'un commentaire
-                $signaler = 'non';
-                $req = $db->prepare('INSERT INTO commentaire (id_page,auteur,message,signaler) VALUES (?,?,?,?)');
-                $req->execute(array($_GET['chapitre'],$_POST['pseudo'],$_POST['commentaire'],$signaler));
-                ?>
-                    <pre>
-                            <?php var_dump($signaler); ?>
-                    </pre>
-                <?php
+                $signaler = "false";
+                $moderer = "false"; 
+                $req = $db->prepare('INSERT INTO commentaire (id_page,auteur,message,signaler,moderer) VALUES (?,?,?,?,?)');
+                $req->execute(array($_GET['chapitre'],$_POST['pseudo'],$_POST['commentaire'],$signaler,$moderer));
             } 
             $req->CloseCursor();
             ?>
         </form>
         <?php
             //recupération des commentaire
-            $req = $db->prepare('SELECT id,auteur,message,DATE_FORMAT(date_creation,\'%d/%m/%Y\') AS date_creation_fr FROM commentaire  WHERE id_page = ? ORDER BY id DESC');
+            $req = $db->prepare('SELECT id,auteur,message,moderer,DATE_FORMAT(date_creation,\'%d/%m/%Y\') AS date_creation_fr FROM commentaire  WHERE id_page = ? ORDER BY id DESC');
             $req->execute(array($_GET['chapitre']));
             while($donnees = $req->fetch())
             {
-                ?>  
+                //si le commenatire n'est pas modéré
+                if($donnees['moderer'] == "false")
+                {
+                    ?>  
                     <div id = "commentaire_<?php echo $donnees['id'];?>">
                         <table>
                             <tr>
@@ -99,15 +99,35 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href = "signaler.php?commentaire=<?php echo $donnees['id'] ?>" class = "button" id = "button_signaler">signaler</a>
+                                    <a href = "signaler.php?commentaire=<?php echo $donnees['id'] ?>" class = "button">signaler</a>
                                 </td>
                             </tr>
                         </table>
                     </div>    
                 <?php
-
             }
-            ?>
+            // Si le message est modéré
+            if($donnees['moderer'] == 'true')
+            {
+                ?>  
+                <div id = "commentaire_<?php echo $donnees['id'];?>">
+                    <table>
+                        <tr>
+                            <td>
+                                <strong> Le <?php echo htmlspecialchars($donnees['date_creation_fr']), " par " , htmlspecialchars($donnees['auteur']);  ?> :</strong> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Message modéré !</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>    
+                <?php
+            }
+        }
+        ?>
         <!--Inclusion du footer -->
         <?php include('footer.php') ?>
         <!-- javascript -->

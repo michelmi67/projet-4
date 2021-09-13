@@ -37,7 +37,7 @@
             <table>
                 <thead>
                     <tr >
-                        <td colspan = "7">Commentaire signalé</td>
+                        <td colspan = "8">Commentaire signalé</td>
                     </tr>
                     <tr>
                         <td>ID</td>
@@ -45,14 +45,15 @@
                         <td>Auteur</td>
                         <td >Message</td>
                         <td>Signaler</td>
+                        <td>Moderer</td>
                         <td>Action</td>
                         <td>Date</td>
                     </tr> 
                 </thead>
                 <tbody>
                 <?php        
-                    //Commentaire signalé
-                    $req = $db->query('SELECT id,id_page,auteur,message,signaler,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire  WHERE signaler = \'oui\' ORDER BY date_creation');
+                    //Récupération des commentaire signalé
+                    $req = $db->query('SELECT id,id_page,auteur,message,signaler,moderer,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire  WHERE signaler = \'true\' ORDER BY date_creation');
                     while($donnees = $req->fetch())
                     {
                         //instanciation des variables
@@ -61,6 +62,7 @@
                         $auteur = $donnees['auteur'];
                         $message = strip_tags($donnees['message']);
                         $signaler = $donnees['signaler'];
+                        $moderer = $donnees['moderer'];
                         $date = $donnees['date_creation_fr'];
                         ?> 
                         <tr>
@@ -68,7 +70,8 @@
                             <td ><?php echo $id_page;?></td>
                             <td><?php echo $auteur; ?></td>  
                             <td><?php echo substr($message,0,100);?></td>
-                            <td><?php echo $signaler; ?></td> 
+                            <td><?php echo $signaler; ?></td>
+                            <td><?php echo $moderer ; ?></td>
                             <td>
                             <div class = "action"> 
                                 <a href = "chapitre.php?chapitre=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
@@ -86,21 +89,22 @@
             </table>
             <table>
                 <thead>
-                    <tr><td colspan = "7">Commentaire</td></tr>
+                    <tr><td colspan = "8">Commentaire</td></tr>
                     <tr>
                         <td>ID</td>
                         <td>ID page</td>
                         <td>Auteur</td>
                         <td>Message</td>
                         <td>Signaler</td>
+                        <td>Modéré</td>
                         <td>Action</td>
                         <td>Date</td>
                     </tr>
                 </thead>
                 <tbody>
                     <?php        
-                    //Commentaire
-                    $req = $db->query('SELECT id,id_page,auteur,message,signaler,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire ORDER BY date_creation ');
+                    //Récupération des commentaire
+                    $req = $db->query('SELECT id,id_page,auteur,message,signaler,moderer,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM commentaire ORDER BY date_creation ');
                     while($donnees = $req->fetch())
                     {
                         //instanciation des variables
@@ -109,6 +113,7 @@
                         $auteur = $donnees['auteur'];
                         $message = strip_tags($donnees['message']);
                         $signaler = $donnees['signaler'];
+                        $moderer = $donnees['moderer'];
                         $date = $donnees['date_creation_fr'];
                         ?> 
                         <tr>
@@ -116,12 +121,14 @@
                             <td ><?php echo $id_page;?></td>
                             <td><?php echo $auteur; ?></td>  
                             <td><?php echo substr($message,0,100);?></td>
-                            <td><?php echo $signaler; ?><td> 
-                            <div class = "action"> 
-                            <a href = "chapitre.php?chapitre=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
-                                <a href = "moderer_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-tired"></i></a>
-                                <a href = "suprime_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
-                            </div>
+                            <td><?php echo $signaler; ?></td> 
+                            <td><?php echo $moderer; ?></td>
+                            <td>
+                                <div class = "action"> 
+                                    <a href = "chapitre.php?chapitre=<?php echo $donnees['id_page'];?>#commentaire_<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
+                                    <a href = "moderer_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-tired"></i></a>
+                                    <a href = "suprime_commentaire.php?commentaire=<?php echo $donnees['id'];?>"><i class="far fa-trash-alt"></i></a>
+                                </div>
                             </td>
                             <td><?php echo $date; ?></td>
                         </tr> 
