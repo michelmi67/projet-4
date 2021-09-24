@@ -34,25 +34,52 @@
             $donnees = $req->fetch();
             echo $donnees['titre'];
             echo $donnees['texte'];
+            $req->CloseCursor();
             
             //bouton suivant et précédent
-            $page_courante = (int)$_GET['texte'];
-            $req_2 =  $db->prepare('SELECT count(*) as total from article');
-            $req_2->execute();
-            $count = (int)$req_2->fetchColumn();
-            $req_2->CloseCursor();
-            ?>
+            $id_page_courante = (int)$_GET['texte'];
             
+            //Requette pour mettre les id dans un tabbleau
+            $req2 = $db->query('SELECT id FROM article'); 
+            $tableau_ids = array();
+            while ($donnees2 = $req2->fetch()) 
+            { 
+                $tableau_ids[] = (int)$donnees2['id'];                  
+            } 
+            ?>
             <div class = "suivant_precedent">
-                <?php 
-                if($page_courante > 1){
+                <?php
+                //Récupération des Index dans le tableau ID 
+                $index_page_courante = array_search($id_page_courante, $tableau_ids);
+                $index_page_precedente = $index_page_courante-1;
+                $index_page_suivante = $index_page_courante+1;
+
+                //Récupération des ID des pages en fonction ces index
+                if(array_key_exists($index_page_precedente,$tableau_ids))
+                {
+                    $id_page_precedente = $tableau_ids[$index_page_precedente];
+                }
+                else
+                {
+                    $id_page_precedente = null;
+                }
+                if(array_key_exists($index_page_suivante,$tableau_ids))
+                {
+                    $id_page_suivante = $tableau_ids[$index_page_suivante];
+                }
+                else
+                {
+                    $id_page_suivante = null;
+                }
+                
+                if(!is_null($id_page_precedente)){
                     ?>
-                    <a href = "article.php?texte=<?php echo $donnees['id']-1; ?>" class = "button">précédent</a>
+                    <a href = "article.php?texte=<?php echo $id_page_precedente; ?>" class = "button">précédent</a>
                     <?php
                 }
-                if($page_courante != $count){
+                if(!is_null($id_page_suivante)){
                     ?>
-                    <a href = "article.php?texte=<?php echo $donnees['id']+1; ?>" class = "button">suivant</a>
+                    <a href = "article.php?texte=<?php echo $id_page_suivante; ?>" class = "button">suivant</a>
                     <?php
                 }
                 ?>
