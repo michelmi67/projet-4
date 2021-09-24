@@ -37,7 +37,7 @@
         <?php
   
         ?>
-        <form method = "post" action = "">    
+        <form method = "post" action = "#">    
             <textarea id = "modif_titre" name = "modif_titre" placeholder = "Inserer votre Titre" >
                 <?php
                 //Récupération du Titre

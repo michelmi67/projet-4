@@ -55,8 +55,8 @@
                         ?> 
                         <tr>
                             <td><?php echo $donnees['id']; ?></td>
-                            <td><?php echo substr($titre,0,50);?></td> 
-                            <td><?php echo substr($texte,0,100);?></td>
+                            <td><?php echo substr($titre,0,60)."...";?></td> 
+                            <td><?php echo substr($texte,0,100)."...";?></td>
                             <td>
                                 <a href = "article.php?texte=<?php echo $donnees['id'];?>"><i class="far fa-eye"></i></a>
                                 <a href = "modif_article.php?texte=<?php echo $donnees['id'];?>"><i class="fas fa-pen"></i></a>

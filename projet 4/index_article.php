@@ -44,7 +44,7 @@
                         </tr>
                         <tr>
                             <td class = "texte_<?php echo $donnees['id'] ?>">
-                                <?php echo substr($texte,0,1000);?><br>
+                                <?php echo substr($texte,0,1000)."...";?><br>
                                 <p><a href = "article.php?texte=<?php echo $donnees['id'] ?>" > lire la suite...</a></p>
                             </td>
                                                 
