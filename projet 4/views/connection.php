@@ -8,7 +8,7 @@ session_start();
         <title>Blog de Jean Forteroche</title>
         <meta charset = "utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="../css/style.css"/>
         <!-- bootstrap -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     </head>
@@ -27,16 +27,16 @@ session_start();
 
         <?php
         //Connection à la base de données
-        try
+        /*try
         {
             $db = new PDO('mysql:host=localhost;dbname=projet_4;charset=utf8','root','');
         }
         catch(Exeption $e)
         {
             die('Erreur : ' .$e->getMessage());
-        }
+        }*/
 
-        if($_POST)
+        /*if($_POST)
         {
             //on récupère l'adresse email de l'admin
             $email_connection = htmlspecialchars($_POST['email_connection']);
@@ -72,7 +72,7 @@ session_start();
                 }
             }
             $req->CloseCursor();
-        }
+        }*/
         ?>
         <!--Inclusion du footer -->
         <?php include('footer.php') ?>

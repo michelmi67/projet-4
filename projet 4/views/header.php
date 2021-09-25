@@ -14,7 +14,7 @@
             ?>
         </div>
         <div class = "article">
-            <a href = "index.php" class = "button">Accueil</a>
+            <a href = "accueil.php" class = "button">Accueil</a>
             <a href = "index_article.php" class = "button">Articles</a>
         </div>
     </header>

@@ -6,8 +6,7 @@ if (isset($_GET['action'])) {
         accueil();
     }
     elseif ($_GET['action'] == 'connection') {
-           
-        
+        //connection();
     }
 }
 else {

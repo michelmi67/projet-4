@@ -9,3 +9,9 @@ function accueil()
     require('views/accueil.php');
 }
 
+/*function connection()
+{
+    $connection = connection_admin();
+    require('views/connection.php');
+
+}*/
