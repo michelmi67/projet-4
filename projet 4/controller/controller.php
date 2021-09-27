@@ -9,9 +9,8 @@ function accueil()
     require('views/accueil.php');
 }
 
-/*function connection()
+function index_articles()
 {
-    $connection = connection_admin();
-    require('views/connection.php');
-
-}*/
+    $all_articles = recup_all_articles();
+    require('views/index_article.php');
+}

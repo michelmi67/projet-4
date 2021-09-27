@@ -1,6 +1,6 @@
 <header>
         <div class = "connection">
-            <a href = "connection.php" class = "button" id = "button_connection">Connection admin</a>
+            <a href = "views/connection.php" class = "button" id = "button_connection">Connection admin</a>
             <?php
             if(isset($_SESSION['id']))
             {

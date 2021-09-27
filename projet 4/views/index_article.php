@@ -31,11 +31,10 @@
             }
 
             
-            //Article
-            $req = $db->query('SELECT id,titre,texte,DATE_FORMAT(date_creation,\' %d/%m/%Y \') AS date_creation_fr FROM article ORDER BY id  ');
-            while($donnees = $req->fetch())
+            
+            foreach($all_articles as $article)
             {
-                $texte = strip_tags($donnees['texte']);
+                $texte = strip_tags($article['texte']);
                 ?> 
                 <table>
                     <tbody>

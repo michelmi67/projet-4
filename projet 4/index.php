@@ -5,8 +5,8 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'accueil') {
         accueil();
     }
-    elseif ($_GET['action'] == 'connection') {
-        //connection();
+    elseif ($_GET['action'] == 'index_article') {
+        index_articles();
     }
 }
 else {
