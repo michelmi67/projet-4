@@ -14,13 +14,13 @@ function db_connect()
 }
 
 //récupération d'un article
- function recup_article()
+ /*function recup_article()
 {
     $req = $db->prepare('SELECT id,titre,texte FROM article  WHERE id = ?');
     $req->execute(array($_GET['texte']));
     $donnees = $req->fetch();
     $req->CloseCursor;
-}
+}*/
 
 //Recupération des 3 derniers articles
 function recup_3_derniers_articles()
@@ -48,4 +48,14 @@ function recup_all_articles()
     }
     $req->CloseCursor();
     return $all_articles;
+}
+
+function recup_article($id)
+{
+    $db = new PDO('mysql:host=localhost;dbname=projet_4;charset=utf8','root',''); 
+    $req = $db->prepare('SELECT id,titre,texte FROM article  WHERE id = ?');
+    $req->execute(array($id));
+    $article = $req->fetch();
+    $req->CloseCursor();
+    return $article;
 }
