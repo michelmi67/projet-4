@@ -1,9 +1,9 @@
-// Supression du bouton connection si on est déja connecté
-let button_connection = document.getElementById('button_connection');
-let button_deconnection = document.getElementById('button_deconnection');
-button_deconnection.style.display = 'block';
+// Supression du bouton connexion si on est déja connecté
+let button_connexion = document.getElementById('button_connexion');
+let button_deconnexion = document.getElementById('button_deconnexion');
+button_deconnexion.style.display = 'block';
 
-if(button_deconnection.style.display == "block"){
-    button_connection.style.display = 'none';
+if(button_deconnexion.style.display == "block"){
+    button_connexion.style.display = 'none';
 }    
 
